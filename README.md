@@ -158,7 +158,12 @@ mayor = ( Num1 > Num2)? Num1:Num2;
 
 String Mensaje = (Saldo < 0)? "CORRECTO": "SALDO NEGATIVO";
 
+
+
+
+SWITCH
 SENTENCIA ALTERNATIVA MÚLTIPLE (SEGÚN)
+_______________________________________________________________________
 
 
 switch (expresión) {
