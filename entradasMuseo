@@ -1,0 +1,151 @@
+/*1.- Se desea programar una aplicación de  gestión de entradas a un museo que procesa cuatro tipos de entradas: las entrada de abonado y las entradas normales que pueden ser: infantil, juvenil o adulto.  Cada una tiene los siguiente precios:
+
+•	Abonado (Gratis)
+•	Infantil de 0 – hasta 12 años. ( 2 Euros )
+•	Juvenil de 13 – hasta 17 años. (5 Euros)
+•	Adulto  desde los 18 años. (10 Euros)
+
+El usuario introducirá un número con el tipo de entrada (1 - Abonado / 2 - Normal o 0 - Fin ) Si el usuario introduce 2 se solicitará además la edad de la visitante para calcular el tipo de entrada que va obtener (Infantil, Juvenil o Adulto).
+
+Una vez que el usuario introduce como tipo de entrada el valor  0, el programa terminará mostrando el total de dinero recaudado, el total de entradas vendidas y el porcentaje entradas de abonados y el porcentaje entradas normales que se ha realizado.
+
+Ejemplo de ejecución:
+
+Introduzca el tipo de entrada 1-Abonado, 2-Normal, 0-Terminar [1,2,0]:1
+Introduzca el tipo de entrada 1-Abonado, 2-Normal, 0-Terminar [1,2,0]:1
+Introduzca el tipo de entrada 1-Abonado, 2-Normal, 0-Terminar [1,2,0]:1
+Introduzca el tipo de entrada 1-Abonado, 2-Normal, 0-Terminar [1,2,0]:2
+Edad del visitante:3
+Introduzca el tipo de entrada 1-Abonado, 2-Normal, 0-Terminar [1,2,0]:2
+Edad del visitante:4
+Introduzca el tipo de entrada 1-Abonado, 2-Normal, 0-Terminar [1,2,0]:2
+Edad del visitante:32
+Introduzca el tipo de entrada 1-Abonado, 2-Normal, 0-Terminar [1,2,0]:0
+
+Total Recaudación: 14 Euros
+Total de entradas vendidas: 6 Entradas
+Porcentaje Abonados 50 %
+Porcentaje Normales 50 %
+*/
+
+
+
+package examen2021;
+
+import java.util.Scanner;
+
+public class primerEjercicio {
+static Scanner sc=new Scanner (System.in);
+
+	static int decisionUsuario;
+	static private int edad;
+	static int precioAbonado;
+	static int precioInfantil;
+	static int precioJuvenil;
+	static int precioAdulto;
+	static int precioTotal;
+	static int opcionNormal;
+	static int opcion;
+	static int totalEntradasVendidas;
+	static int porcentajeAbonados;
+	static int porcentajeEntradasNormales;
+	static int totalAbonados;
+	static int totalNormales;
+	static int contador;
+	
+	public primerEjercicio(int edad) {
+		this.edad=edad;
+	}
+	public void elegirAbonado() {
+		System.out.println("Ha elegido la entrada abonado");
+		precioAbonado=0;
+		precioTotal+=precioAbonado;
+		totalEntradasVendidas++;
+		totalAbonados++;
+	}
+	
+	public void elegirNormal() {
+		System.out.println("A continuación se muestra el menú de entrada normal:");
+		System.out.println("Infantil de 0 a 12 años(2 euros)");
+		System.out.println("Juvenil de 13 hasta 17 años(5 euros)");
+		System.out.println("Adulto desde los 18 años (10 euros)");
+		System.out.println("Por favor escriba su edad");
+		this.edad=sc.nextInt();
+		totalNormales++;
+		if ((this.edad>=0)&&(this.edad<=12)) {
+			System.out.println("Usted ha seleccionado entrada infantil");
+			precioInfantil=2;
+			precioTotal+=precioInfantil;
+		}else if ((this.edad>=13)&&(this.edad<=17)) {
+			System.out.println("Usted ha seleccionada entrada juvenil");
+			precioJuvenil=5;
+			precioTotal+=precioJuvenil;
+		
+		}else if (this.edad>=18) {
+			System.out.println("Usted ha elegido entrada adulto");
+			precioAdulto=10;
+			precioTotal+=precioAdulto;
+		}else {
+			System.out.println("La edad introducida no se puede registrar");
+			}
+		}
+	
+	
+	public static void main(String[] args) {
+		
+		primerEjercicio persona=new primerEjercicio(edad);
+		
+		System.out.println("Bienvenido al programa de gestión de entradas de museo");
+		System.out.println("A continuación se muestra el menú de los diferentes tipos de entradas:");
+		System.out.println("Pulse 1 para Abonado(Gratis)");
+		System.out.println("Pulse 2 para entrada normal");
+		System.out.println("Pulse 0 para terminar");
+		
+		System.out.println();
+		System.out.println("Elige una opción por favor");
+		
+		while(contador!=5) {
+			opcion=sc.nextInt();
+		
+			switch(opcion) {
+		
+			case 1:
+				persona.elegirAbonado();
+				contador++;
+				break;
+		
+			case 2:
+				persona.elegirNormal();
+				contador++;
+				break;
+		
+			case 0:
+				System.out.println("Usted ha decidido salir del sistema");
+				System.out.println("Hasta otra");
+				contador++;
+				
+				System.out.println("Total de dinero recaudado: "+precioTotal);
+				System.out.println("Total de entradas vendidas: "+totalEntradasVendidas);
+				System.out.println("Porcentaje entradas abonados: "+((totalAbonados*100)/totalEntradasVendidas)+"%");
+				System.out.println("Porcentaje entradas normales: "+((totalNormales*100)/totalEntradasVendidas)+"%");
+				System.exit(0);
+				
+				break;
+			default:
+				System.out.println("No se ha podido procesar su solicitud");
+				contador++;
+				
+				}
+		}
+		try {
+		System.out.println("Total de dinero recaudado: "+precioTotal);
+		System.out.println("Total de entradas vendidas: "+totalEntradasVendidas);
+		System.out.println("Porcentaje entradas abonados: "+((totalAbonados*100)/totalEntradasVendidas)+"%");
+		System.out.println("Porcentaje entradas normales: "+((totalNormales*100)/totalEntradasVendidas)+"%");
+		}catch(ArithmeticException e) {
+			System.out.println("El resultado es 0");
+			}
+		}
+		
+
+}
