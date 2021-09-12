@@ -1,0 +1,369 @@
+ESTRUCTURAS DE CONTROL:
+
+
+IF:
+
+Las declaraciones condicionales son usadas para ejecutar acciones diferentes basadas en condiciones diferentes. 
+
+La declaración if es una de las declaraciones condicionales más frecuente utilizadas.
+Si la expresión condicional de la declaración if evalúa a true (verdadero), el bloque de código dentro de la declaración if es ejecutado. Si la expresión evalúa a false (falso), el primer conjunto de código después del final de la declaración if (después de las llaves de cierre) es ejecutado.
+
+
+Cualquier de los siguientes operadores de comparación pueden ser utilizados para formar la condición:
+< menor que
+> mayor que
+!= no igual que
+== igual que
+<= menor o igual que
+>= mayor o igual que
+
+
+If (condition){
+	//Se pone la condición
+}
+
+public class Program {
+	public static void main(String[] args) {
+		int x = 7;
+		if(x < 42) {
+			System.out.println("Hi");
+		}
+	}
+}
+
+
+Recuerda que necesitas utilizas dos signos de igual (==) para probar equidad, ya que un sólo signo de igual es el operador asignación.
+
+
+Tienes 12.000 dólares para comprar un coche.
+Se te da un programa que toma el precio del coche como entrada.
+ 
+Tarea
+Genera "yes" si el precio es inferior o igual a 12.000.
+ 
+Ejemplo de entrada
+11000
+ 
+Ejemplo de salida
+yes
+
+
+import java.util.Scanner;
+
+public class Main {
+
+   public static void main(String[] args) {
+       
+       Scanner scanner = new Scanner(System.in);
+       int price = scanner.nextInt();
+       
+       if(price<=12000){
+       	System.out.println("yes");
+       }
+
+     
+   }
+}
+
+
+IF ELSE:
+
+Una declaración if puede venir seguida por una declaración opcional else, la cual se ejecuta cuando la condición se evalúa como falsa.
+
+
+public class Program {
+	public static void main(String[] args) {
+		int age = 30;
+		if (age < 16) {
+			System.out.println("Too Young");
+		} else {
+			System.out.println("Welcome!");
+		}
+	}
+}
+
+Puedes utilizar una declaración if-else dentro de otra declaración if o else.
+
+
+public class Program {
+	public static void main(String[] args) {
+		int age = 25;
+		if(age > 0) {
+			if(age > 16) {
+				System.out.println("Welcome!");
+			} else {
+				System.out.println("Too Young");
+			}
+		} else {
+			System.out.println("Error");
+		}
+	}
+}
+
+SWITCH:
+
+
+Una declaración switch valida una variable por igualdad contra una lista de valores. Cada valor es llamado un case, y la variable que está siendo evaluada es comparada contra cada case.
+
+
+- Cuando la variable que está siendo evaluada es igual que un case, las declaraciones que siguen a ese case serán ejecutadas hasta que una declaración break es alcanzada.
+- Cuando una declaración break es alcanzada, el switch finaliza y el flujo de control salta a la siguiente línea después de la declaración switch.
+- No todos los case necesitan contener un break. Si no aparece un break, el flujo de control seguirá a través de los cases subsiguientes hasta que se alcance un break.
+
+public class Program {
+	public static void main(String[] args) {
+		int day = 3;
+		switch(day) {
+			case 1:
+				System.out.println("Monday");
+				break;
+			case 2:
+				System.out.println("Tuesday");
+				break;
+			case 3:
+				System.out.println("Wednesday");
+				break;
+		}
+	}
+}
+
+Una declaración switch puede tener un case default opcional. 
+La declaración default puede ser utilizada para realizar una actividad cuando ningunos de los cases es igualado.
+
+
+public class Program {
+	public static void main(String[] args) {
+		int day = 3;
+
+		switch(day) {
+			case 6:
+				System.out.println("Saturday");
+				break;
+			case 7:
+				System.out.println("Sunday");
+				break;
+			default:
+				System.out.println("Weekday");
+		}
+	}
+}
+
+
+
+No se necesita un break en el case default, ya que siempre es la última declaración en el switch.
+
+
+
+
+
+EJEMPLO:
+
+
+
+
+Tu robot puede reconocer tus emociones marcadas con un número que representa a cada una de ellas:
+1 - You are happy!
+2 - You are sad!
+3 - You are angry!
+4 - You are surprised!
+Escribe un programa que tome el número de la emoción como entrada y emita el mensaje correspondiente en un formato determinado.
+Si la entrada es una emoción que el programa no conoce, debería salir: "Unknown emotion.".
+
+
+
+import java.util.Scanner;
+
+public class Main {
+   public static void main(String[] args) {
+       Scanner scanner = new Scanner(System.in);
+       int emotion = scanner.nextInt();
+       /*
+       1 - "You are happy!"
+       2 - "You are sad!"
+       3 - "You are angry!"
+       4 - "You are surprised!"
+       other - "Unknown emotion."
+       */
+       
+       switch(emotion){
+       	case 1:
+       		System.out.println("You are happy!");
+       		break;
+       	case 2:
+       		System.out.println("You are sad!");
+       		break;
+       	case 3:
+       		System.out.println("You are angry!");
+       		break;
+       	case 4:
+       		System.out.println("You are surprised!");
+       		break;
+       	default:
+       		System.out.println("Unknown emotion.");
+       }
+   }
+}
+La expresión switch permite múltiples valores separados por comas por caso y devuelve un valor para todo el bloque de caso-switch.
+
+
+public class Program
+{
+	public static void main(String[] args) {
+
+		int day = 2;
+		String dayType  = switch(day) {
+			case 1, 2, 3, 4, 5 -> "Working day";
+			case 6, 7 -> "Weekend";
+			default -> "Invalid day";
+			};
+		System.out.println(dayType);
+	}
+} 
+
+
+WHILE:
+
+
+Un bucle (loop) permite ejecutar repetidamente una declaración o grupo de declaraciones.
+
+Un bucle while ejecuta repetidamente una declaración siempre que una condición dada sea verdadera.
+
+
+public class Program {
+	public static void main(String[] args) {
+		int x = 3;
+		while(x > 0) {
+			System.out.println(x);
+			x--;
+		}
+	}
+}
+
+
+El bucle while valida la condición x > 0. Si evalúa a verdadero (true), ejecutará las declaraciones dentro de su cuerpo. Luego valida la condición nuevamente y se repite el proceso.
+
+
+Cuando la expresión es probada y el resultado sea falso (false), el cuerpo del bucle es omitido y la primera declaración después del bucle while es ejecutada.
+
+
+public class Program {
+	public static void main(String[] args) {
+		int x = 6;
+
+		while( x < 10 )
+		{
+			System.out.println(x);
+			x++;
+		}
+		System.out.println("Loop ended");
+	}
+}
+
+
+BUCLE FOR:
+
+
+Otra estructura de bucle es el bucle for. Un bucle for te permite escribir eficientemente un bucle que necesita ser ejecutado un número específico de veces.
+
+
+Inicialización: Esta expresión se ejecuta sólo una vez al comienzo del bucle
+Condición: Es evaluada cada vez que itera el bucle. El bucle ejecuta la declaración repetidamente, hasta que esta condición retorne falso.
+Incremento/Decremento: Se ejecuta después de cada iteración del bucle.
+
+El siguiente ejemplo imprime los números del 1 al 5.
+
+
+public class Program {
+	public static void main(String[] args) {
+		for(int x = 1; x <=5; x++) {
+			System.out.println(x);
+		}
+	}
+}
+
+
+
+
+
+Puedes tener cualquier tipo de condición y cualquier tipo de incremento en el bucle for.
+
+El siguiente ejemplo imprime sólo los valores pares entre 0 y 10:
+
+
+public class Program {
+	public static void main(String[] args) {
+		for(int x=0; x<=10; x=x+2) {
+			System.out.println(x);
+		}
+	}
+}
+
+
+
+
+
+
+DO WHILE:
+
+Un bucle do...while es similar a un bucle while, excepto que en un bucle do...while está garantizado que será ejecutado al menos una vez.
+
+
+public class Program {
+	public static void main(String[] args) {
+		int x = 1;
+		do {
+			System.out.println(x);
+			x++;
+		} while(x < 5);
+	}
+}
+
+Fíjate que la condición aparece al final del bucle, por lo que las declaraciones en el bucle se ejecutan una vez antes de ser evaluada.
+
+Incluso con una condición falsa, el código será ejecutado una vez.
+
+public class Program {
+	public static void main(String[] args) {
+		int x = 1;
+		do {
+			System.out.println(x);
+			x++;
+		} while(x < 0);
+	}
+}
+
+DECLARACIONES DE CONTROL DE BUCLES:
+
+Las declaraciones break y continue cambian el flujo de ejecución del bucle.
+La declaración break finaliza la ejecución del bucle y transfiere la ejecución a la declaración que sigue inmediatamente al bucle.
+
+public class Program {
+	public static void main(String[] args) {
+		int x = 1;
+		
+		while(x > 0) {
+			System.out.println(x);
+			if(x == 4) {
+				break;
+			}
+			x++;
+		}
+	}
+}
+
+
+La declaración continue produce que el bucle omita el resto de sus declaraciones y evalúe nuevamente su condición antes de reiterar.  En otras palabras, hace que el bucle salte a su próxima iteración.
+
+
+public class Program {
+	public static void main(String[] args) {
+		for(int x=10; x<=40; x=x+10) {
+			if(x == 30) {
+				continue;
+			}
+			System.out.println(x);
+		}
+	}
+}
+
+
